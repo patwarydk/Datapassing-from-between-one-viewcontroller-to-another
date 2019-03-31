@@ -10,11 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var nameUiText: UITextField!
+    
+    @IBOutlet weak var ageUiText: UITextField!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func dataPassButtonUiButton(_ sender: Any) {
+        performSegue(withIdentifier: "SegueIdentifier", sender: self)
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sendData = segue.destination as! SecondViewController
+        sendData.name = nameUiText.text!
+        sendData.age = ageUiText.text!
+    }
+    
 }
 
